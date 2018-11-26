@@ -1,0 +1,47 @@
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: url(../images/fourbg.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    width: 88%;
+    height: 80%;
+    margin: 5% auto 0;
+}
+
+.menu-no, .menu-yes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    width: 40%;
+}
+
+
+.menu-yes {
+    margin-left: auto;
+}
+
+img {
+    width: 120px;
+    height: 80px;
+    margin: 16px;
+}
+
+
+
