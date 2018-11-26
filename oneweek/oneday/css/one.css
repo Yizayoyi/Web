@@ -1,0 +1,142 @@
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: url(../images/onebg.jpg) no-repeat;
+    background-size: auto 100%;
+}
+
+.title {
+    text-align: center;
+    color: white;
+    padding-top: 40px;
+    font-size: 40px;
+}
+
+.main {
+    margin: 60px auto 0;
+    display: flex;
+}
+
+.form, .notice {
+    height: 460px;
+    padding: 20px;
+}
+
+.notice {
+    background: rgba(240, 4, 134, .6);
+}
+
+.form {
+    background: rgba(255, 255, 255, .9);
+}
+
+@media screen and (max-width: 420px) {
+    .main {
+        width: 350px;
+        height: 1000px;
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+    .form, .notice {
+        width: 310px;
+    }
+}
+
+@media screen and (min-width: 420px) {
+    .main {
+        width: 800px;
+        height: 500px;
+        flex-direction: row;
+    }
+    .form, .notice {
+        width: 360px;
+    }
+}
+
+.notice-title {
+    height: 80px;
+    line-height: 80px;
+    font-size: 30px;
+    color: white;
+}
+
+.notice-cont {
+    font-size: 16px;
+    color: white;
+}
+
+input {
+    width: calc(100% - 40px);
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 40px;
+    outline: none;
+    border: 0;
+    background: rgba(255, 255, 255, .98);
+    transition: all .8s;
+    margin-bottom: 5px;
+}
+
+input:focus {
+    background: rgba(55, 247, 128, 0.7);
+}
+
+input[type="submit"] {
+    background: rgba(238, 74, 151, 0.8);
+    color: white;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background: rgba(88, 137, 241, 0.8);
+}
+
+#form {
+    text-align: center;
+}
+
+p {
+    color: red;
+    text-align: left;
+    font-size: 12px;
+}
+
+.strong {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 10px;
+    margin-bottom: 5px;
+}
+
+#strong-one, #strong-two, #strong-three {
+    height: 100%;
+    width: 20px;
+    margin-left: 2px;
+    border: 1px solid black;
+}
+
+.strong-one {
+    background: #f12323;
+}
+
+.strong-two {
+    background: #d9f82c;
+}
+
+.strong-three {
+    background: #05f154;
+}
