@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width" name="viewport" />
+    <title>Web课程设计 - 第一周 - 第一天 - 3 - 绘制时钟</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            background: #ebebeb;
+        }
+
+        canvas {
+            position: absolute;
+            top: calc(50% - 160px);
+            left: calc(50% - 160px);
+            background: #ebebeb;
+        }
+
+        input {
+            width: 16px;
+            height: 16px;
+            line-height: 15px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: 45px;
+            margin-left: -10px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas height="320" width="320"></canvas>
+    <input readonly="" type="text" />
+</body>
+<script>
+    var PI = Math.PI;
+    var clockR = 150; // 时钟半径
+    var centerX = 160; // 时钟圆心坐标X
+    var centerY = 160; // 时钟圆心坐标Y
+    var clockArr = [ // 记录时钟边框的数组 第一个参数为一条边框的宽度 第二个参数为一条边框的颜色
+        [4, "#009688"],
+        [4, "#01AAED"],
+        [4, "#5FB878"]
+    ];
+    var clockSum = 0; // 边框总宽度
+    for (var i in clockArr) { // 计算边框总宽度
+        clockSum += clockArr[i][0];
+    }
+    var hourLength = clockR - clockSum - 60; // 时针长度
+    var minuteLength = clockR - clockSum - 40; // 分针长度
+    var secondLength = clockR - clockSum - 20; // 秒针长度
+    var kLength = 5; // 刻度长度
+    var canvas = document.getElementsByTagName("canvas")[0];
+    var input = document.getElementsByTagName("input")[0];
+    var c = canvas.getContext("2d");
+
+    var clacXY = function (r, d, cx = centerX, cy = centerY) { // 计算坐标
+        var q = (2 * PI * d / 60) - 0.5 * PI;
+        var x = r * Math.cos(q) + cx;
+        var y = r * Math.sin(q) + cy;
+        return [x, y];
+    }
+
+    var drawTime = function (r, d, color) { // 画指针
+        var XY = clacXY(r, d);
+        c.beginPath();
+        c.strokeStyle = color;
+        c.lineWidth = 3;
+        c.moveTo(centerX, centerY);
+        c.lineTo(XY[0], XY[1]);
+        c.stroke();
+    }
+
+    var drawTimeSecond = function (d) { // 画秒针
+        var XY = clacXY(clockR + kLength, d);
+        c.beginPath();
+        c.fillStyle = "#1E9FFF";
+        c.arc(XY[0], XY[1], kLength / 2, 0, 2 * PI);
+        c.fill();
+        c.stroke();
+    }
+
+    var drawClock = function () { // 画时钟
+        var sum = 0;
+        for (var i in clockArr) { // 时钟的边框
+            c.beginPath();
+            c.lineWidth = clockArr[i][0];
+            c.lineCap = "round";
+            c.strokeStyle = clockArr[i][1];
+            c.arc(centerX, centerY, clockR - sum, 0, 2 * PI);
+            sum += clockArr[i][0];
+            c.stroke();
+        }
+        for (var i = 0; i < 60; i++) { // 时钟的刻度
+            var XY = clacXY(clockR - clockSum, i);
+            c.beginPath();
+            c.lineWidth = 1;
+            c.strokeStyle = "#393D49";
+            if (i % 5 == 0) {
+                c.lineWidth = 3;
+                c.font = "16px Arial";
+                c.textAlign = "center";
+                c.fillStyle = "#393D49";
+                var num = clacXY(clockR - clockSum - kLength - 15, i, centerX, centerY + 6);
+                c.fillText(((i / 5) == 0 ? "12" : (i / 5)).toString(), num[0], num[1]);
+            }
+            if (i % 15 == 0) {
+                c.lineWidth = 5;
+                c.strokeStyle = "#2F4056";
+            }
+            c.moveTo(XY[0], XY[1]);
+            XY = clacXY(clockR - clockSum - kLength, i);
+            c.lineTo(XY[0], XY[1]);
+            c.stroke();
+        }
+    }
+
+    var drawLogo = function () {
+        c.beginPath()
+        c.font = "18px Arial";
+        c.textAlign = "center";
+        c.fillStyle = "#393D49";
+        c.fillText("TISSOT", centerX, centerY / 6 * 4);
+        c.font = "14px Arial";
+        c.fillText("1853", centerX, centerY / 6 * 5);
+        c.stroke();
+    }
+
+
+
+    var draw = function () { // 绘制函数
+
+        c.clearRect(0, 0, canvas.width, canvas.height);
+
+        drawClock();
+        drawLogo();
+
+        c.beginPath();
+        c.fillStyle = "#1E9FFF";
+        c.arc(centerX, centerY, 5, 0, 2 * PI);
+        c.fill();
+        c.stroke();
+
+        var now = new Date();
+        var minute = now.getMinutes();
+        var hour = now.getHours() % 12 * 5 + (minute / 60 * 5);
+        var second = now.getSeconds();
+
+        input.value = now.getDate();
+
+        drawTime(hourLength, hour, "#1E9FFF");
+        drawTime(minuteLength, minute, "#1E9FFF");
+        //drawTime(secondLength, second);
+        drawTimeSecond(second);
+    }
+
+    draw();
+
+    setInterval("draw()", 500); // 程序开始
+
+</script>
+
+</html>
