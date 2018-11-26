@@ -1,0 +1,98 @@
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+nav {
+    background: #d6cece;
+    padding: 0 100px;
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    line-height: 60px;
+}
+
+.right {
+    margin-left: auto;
+}
+
+nav > a {
+    text-decoration: none;
+    padding: 0 20px;
+    color: black;
+}
+
+nav > a:hover, .action {
+    background: #3a9c2d;
+    color: white;
+}
+
+.html5 {
+    color: #3a9c2d;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.another {
+    color: #262725;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: 20px auto 0;
+}
+
+.menu-l, .menu-u, .menu-q {
+    flex: 1;
+    padding: 80px;
+}
+
+.menu-l, .menu-q {
+    text-align: center;
+}
+
+.menu-u {
+    height: 600px;
+}
+
+.menu-u > img {
+    width: 100%;
+    height: 1005;
+}
+
+.menu-l > p > img, .menu-u > div > img {
+    width: 20px;
+    height: 20px;
+}
+
+.menu-u > div {
+    margin-bottom: 20px;
+}
+
+.button {
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    background: #3a9c2d;
+    color: white;
+    text-align: center;
+}
+
+.footer {
+    width: 100%;
+    height: 400px;
+    margin-top: 60px;
+    background: #ececec;
+}
