@@ -10,39 +10,30 @@
 </head>
 
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>商品信息</th>
-                <th>单价</th>
-                <th>数量</th>
-                <th>金额</th>
-                <th>操作</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <div class="shop-info">
-                        <img src="images/menus/1.png">
-                        <div>这是一道菜 很好吃的菜</div>
-                    </div>
-                </td>
-                <td>
-                    ￥38.00
-                </td>
-                <td>
-                    <input type="number">
-                </td>
-                <td>
-                    <span class="money">￥38.00</span>
-                </td>
-                <td>
-                    <a href="javascript:;">删除</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="bg"></div>
+    <div class="max">
+        <table rules="none">
+            <thead>
+                <tr>
+                    <th width="400">商品信息</th>
+                    <th width="100">单价</th>
+                    <th width="100">数量</th>
+                    <th width="100">金额</th>
+                    <th width="100">操作</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <th>总计:</th>
+                    <th></th>
+                    <th></th>
+                    <th><span class="money">￥222</span></th>
+                    <th style="background: goldenrod; color: floralwhite;">结算</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
 </body>
 <script src="js/jquery.js"></script>
 <script src="js/layer/layer.js"></script>
