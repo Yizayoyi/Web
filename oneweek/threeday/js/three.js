@@ -18,7 +18,7 @@ $(".clear").bind("click", function () {
 
 $(".calc").bind("click", function () {
     var str = $("input").val();
-    if (str == null) {
+    if (str == "") {
         $("#result").html("0");
     } else {
         var add = str.split("+");
