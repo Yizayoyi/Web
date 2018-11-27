@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Web课程设计 - 第一周 - 第四天 - 5 - 网上订购表单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/five.css" />
+</head>
+
+<body>
+    <div class="main">
+        <form>
+            <div class="cont">
+                <div class="pc">
+                    <label for="pc1">
+                        <img src="images/fivepc.png">
+                    </label>
+                    <div class="js">
+                        云服务器I型
+                        <br> 1核1G
+                        <br> 20G硬盘
+                    </div>
+                    <input type="radio" name="pc" id="pc1" value="pc1" checked>
+                </div>
+                <div class="pc">
+                    <label for="pc2">
+                        <img src="images/fivepc.png">
+                    </label>
+                    <div class="js">
+                        云服务器II型
+                        <br> 4核4G
+                        <br> 60G硬盘
+                    </div>
+                    <input type="radio" name="pc" id="pc2" value="pc2">
+                </div>
+                <div class="pc">
+                    <label for="pc3">
+                        <img src="images/fivepc.png">
+                    </label>
+                    <div class="js">
+                        云服务器III型
+                        <br> 10核10G
+                        <br> 120G硬盘
+                    </div>
+                    <input type="radio" name="pc" id="pc3" value="pc3">
+                </div>
+                <div class="info">
+                    <fieldset>
+                        <legend>带宽选择</legend>
+                        <input min="1" max="100" type="range" value="1" name="dk" oninput="dknum.value = this.value; setMoney();">
+                        <input type="text" name="dknum" value="1" readonly>
+                    </fieldset>
+                    <fieldset>
+                        <legend>用户信息</legend>
+                        <input type="text" name="name" placeholder="姓名" required autocomplete="off">
+                        <input type="password" name="password" maxlength="6" placeholder="支付密码" required autocomplete="off">
+                    </fieldset>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="money">
+                    总金额：￥
+                    <span id="money"></span>
+                </div>
+                <div class="pay">
+                    立即支付
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/layer/layer.js"></script>
+<script src="js/five.js"></script>
+
+</html>
