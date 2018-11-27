@@ -1,0 +1,21 @@
+
+h1 {
+    text-align: center;
+}
+
+table {
+    margin: 60px auto 0;
+}
+
+th {
+    font-size: 28px;
+    padding: 40px 0;
+}
+
+td {
+    padding: 10px 40px;
+}
+
+.right {
+    text-align: right;
+}
