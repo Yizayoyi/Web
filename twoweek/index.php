@@ -12,60 +12,23 @@ require_once "./html/header1.html";
 <p>
     <button>排行榜</button>
     <button>幸运转盘</button>
-    <button>商店</button>
+    <button id="shop">商店</button>
     <button>垃圾桶</button>
 </p>
 
 <p>金币：<span id="coin"></span></p>
 
-<div class="main">
-    <div class="row">
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-    </div>
+<div class="main"></div>
 
-    <div class="row">
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-    </div>
+<div id="shade"></div>
 
-    <div class="row">
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
-        <div class="flex1">
-            <div class="item"></div>
-        </div>
+<div class="shop">
+    <div class="shop-title">
+        <div class="shop-name">商店</div>
+        <div class="shop-close flex-right">×</div>
     </div>
+    <div class="shop-cont"></div>
 </div>
-
-
 
 <?php require_once "./html/footer1.html";?>
 
