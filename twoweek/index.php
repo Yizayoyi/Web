@@ -27,7 +27,19 @@ require_once "./html/header1.html";
         <div class="shop-name">商店</div>
         <div class="shop-close flex-right">×</div>
     </div>
-    <div class="shop-cont"></div>
+    <div class="shop-cont">
+        <div class="shop-item">
+            <div>
+                平民
+            </div>
+            <div>
+                ￥<span>1000</span>
+            </div>
+            <div>
+                购买
+            </div>
+        </div>
+    </div>
 </div>
 
 <?php require_once "./html/footer1.html";?>

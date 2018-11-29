@@ -120,5 +120,28 @@ $(".shop-close").bind("click", function() {
 });
 
 $("#shop").bind("click", function() {
+    clearShop();
+    for (var i in shops) {
+        $(".shop-cont").append(div);
+        $div = $(".shop-cont").find("div").eq($(".shop-cont").find("div").length - 1);
+        $div.addClass("shop-item");
+        $div.prepend(div);
+        $div.find("div").eq(0).html("购买");
+        if (shops[i].buy == 0) {
+            $div.find("div").eq(0).addClass("disable");
+        } else {
+            $div.find("div").eq(0).addClass("able");
+        }
+        $div.prepend(div);
+        $div.find("div").eq(0).html("￥");
+        $div.find("div").eq(0).append(span);
+        if (shops[i].buy == 0) {
+            $div.find("div").eq(0).find("span").eq(0).html("???");
+        } else {
+            $div.find("div").eq(0).find("span").eq(0).html(shops[i].price);
+        }
+        $div.prepend(div);
+        $div.find("div").eq(0).html(shops[i].name);
+    }
     $("#shade, .shop").show();
 });
