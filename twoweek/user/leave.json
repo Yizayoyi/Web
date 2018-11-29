@@ -1,1 +1,82 @@
-[{"leave":1,"name":"\u5e73\u6c11","src":"","buy":1,"price":1000,"income":100},{"leave":2,"name":"\u58eb\u5175","src":"","buy":0,"price":16000,"income":1600},{"leave":3,"name":"\u6392\u957f","src":"","buy":0,"price":256000,"income":25600},{"leave":4,"name":"\u8fde\u957f","src":"","buy":0,"price":4096000,"income":409600},{"leave":5,"name":"\u8425\u957f","src":"","buy":0,"price":65536000,"income":6553600},{"leave":6,"name":"\u56e2\u6218","src":"","buy":0,"price":1048576000,"income":104857600},{"leave":7,"name":"\u65c5\u957f","src":"","buy":0,"price":16777216000,"income":1677721600},{"leave":8,"name":"\u5e08\u957f","src":"","buy":0,"price":268435450000,"income":26843545000},{"leave":9,"name":"\u519b\u957f","src":"","buy":0,"price":1610612700000,"income":161061270000},{"leave":10,"name":"\u53f8\u4ee4","src":"","buy":0,"price":25769803000000,"income":2576980300000}]
+[
+    {
+        "leave": 1,
+        "name": "\u5e73\u6c11",
+        "src": "",
+        "buy": 1,
+        "price": 1000,
+        "income": 100
+    },
+    {
+        "leave": 2,
+        "name": "\u58eb\u5175",
+        "src": "",
+        "buy": 0,
+        "price": 16000,
+        "income": 1600
+    },
+    {
+        "leave": 3,
+        "name": "\u6392\u957f",
+        "src": "",
+        "buy": 0,
+        "price": 256000,
+        "income": 25600
+    },
+    {
+        "leave": 4,
+        "name": "\u8fde\u957f",
+        "src": "",
+        "buy": 0,
+        "price": 4096000,
+        "income": 409600
+    },
+    {
+        "leave": 5,
+        "name": "\u8425\u957f",
+        "src": "",
+        "buy": 0,
+        "price": 65536000,
+        "income": 6553600
+    },
+    {
+        "leave": 6,
+        "name": "\u56e2\u6218",
+        "src": "",
+        "buy": 0,
+        "price": 1048576000,
+        "income": 104857600
+    },
+    {
+        "leave": 7,
+        "name": "\u65c5\u957f",
+        "src": "",
+        "buy": 0,
+        "price": 16777216000,
+        "income": 1677721600
+    },
+    {
+        "leave": 8,
+        "name": "\u5e08\u957f",
+        "src": "",
+        "buy": 0,
+        "price": 268435450000,
+        "income": 26843545000
+    },
+    {
+        "leave": 9,
+        "name": "\u519b\u957f",
+        "src": "",
+        "buy": 0,
+        "price": 1610612700000,
+        "income": 161061270000
+    },
+    {
+        "leave": 10,
+        "name": "\u53f8\u4ee4",
+        "src": "",
+        "buy": 0,
+        "price": 25769803000000,
+        "income": 2576980300000
+    }
+]

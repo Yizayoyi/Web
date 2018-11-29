@@ -37,6 +37,7 @@ var shops = [];
  * 将数据显示在页面
  */
 var setData = function () {
+    coin = parseInt(coin);
     $("#coin").html(coin);
     $("#leave").html(leave);
     for (var i in data) {
@@ -111,26 +112,74 @@ $.post("./api/get.php", {
 });
 
 
+/**
+ * 寻找空位子
+ */
+var findEmpty = function () {
+    var empty = -1;
+    for (var i in data) {
+        if (data[i].leave == 0) {
+            empty = i;
+            break;
+        }
+    }
+    return empty;
+}
+
+
+/**
+ * 清商店
+ */
 var clearShop = function () {
     $(".shop-cont").empty();
 }
 
+
+/**
+ * 关闭商店
+ */
 $(".shop-close").bind("click", function() {
     $("#shade, .shop").hide();
 });
 
-$("#shop").bind("click", function() {
-    clearShop();
+
+/**
+ * 加载商店
+ */
+var loadShop = function () {
     for (var i in shops) {
         $(".shop-cont").append(div);
         $div = $(".shop-cont").find("div").eq($(".shop-cont").find("div").length - 1);
         $div.addClass("shop-item");
         $div.prepend(div);
         $div.find("div").eq(0).html("购买");
+        $div.find("div").eq(0).attr("data-index", i);
         if (shops[i].buy == 0) {
             $div.find("div").eq(0).addClass("disable");
         } else {
             $div.find("div").eq(0).addClass("able");
+            /**
+             * 购买
+             */
+            $div.find("div").eq(0).bind("click", function (e) {
+                var index = e.target.dataset.index;
+                var empty = findEmpty();
+                if (empty < 0) {
+                    layer.msg("位置已满", {icon: 5});
+                } else {
+                    if (coin < shops[index].price) {
+                        layer.msg("金币不足", {icon: 5});
+                    } else {
+                        coin -= shops[index].price;
+                        shops[index].price += shops[index].price * speed;
+                        shops[index].price = parseInt(shops[index].price);
+                        data[empty].leave = shops[index].leave;
+                        layer.msg("购买成功", {icon: 6, time: 1000});
+                        clearShop();
+                        loadShop();
+                    }
+                }
+            });
         }
         $div.prepend(div);
         $div.find("div").eq(0).html("￥");
@@ -143,5 +192,13 @@ $("#shop").bind("click", function() {
         $div.prepend(div);
         $div.find("div").eq(0).html(shops[i].name);
     }
+}
+
+/**
+ * 打开商店
+ */
+$("#shop").bind("click", function() {
+    clearShop();
+    loadShop();
     $("#shade, .shop").show();
 });
