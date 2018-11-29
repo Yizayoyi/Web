@@ -12,7 +12,7 @@ class Session
 
     public static function get($key)
     {
-        if ($this->has($key)) {
+        if (Session::has($key)) {
             return $_SESSION[$key];
         }
         return false;

@@ -10,7 +10,7 @@ class Cookie
 
     public static function get($key)
     {
-        if ($this->has($key)) {
+        if (Cookie::has($key)) {
             return $_COOKIE[$key];
         }
         return false;
@@ -25,7 +25,7 @@ class Cookie
     }
 
     public static function clear($key) {
-        $this->set($key, "", -1);
+        Cookie::set($key, "", -1);
     }
 
 }
