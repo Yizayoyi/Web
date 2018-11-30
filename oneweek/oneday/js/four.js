@@ -32,4 +32,3 @@ var drop = function (ev) {
     var data = ev.dataTransfer.getData("Menu");
     ev.target.appendChild(document.getElementById(data));
 }
-

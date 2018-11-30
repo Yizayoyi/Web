@@ -24,11 +24,11 @@ h2 {
 }
 
 .main > .row > .flex1 > .item {
-    background: rgba(248, 100, 2, 0.6);
-    text-align: center;
-    height: 60px;
-    line-height: 60px;
-    color: rgb(90, 81, 84);
+    height: auto;
+}
+
+img {
+    width: 100%;
 }
 
 #shade {

@@ -2,81 +2,81 @@
     {
         "leave": 1,
         "name": "平民",
-        "src": "",
+        "src": "images/person/1.png",
         "buy": 1,
         "price": 1000,
-        "income": 100
+        "income": 80
     },
     {
         "leave": 2,
         "name": "士兵",
-        "src": "",
+        "src": "images/person/2.png",
         "buy": 0,
-        "price": 16000,
-        "income": 1600
+        "price": 256000,
+        "income": 160
     },
     {
         "leave": 3,
         "name": "排长",
-        "src": "",
+        "src": "images/person/3.png",
         "buy": 0,
-        "price": 256000,
-        "income": 25600
+        "price": 4096000,
+        "income": 320
     },
     {
         "leave": 4,
         "name": "连长",
-        "src": "",
+        "src": "images/person/4.png",
         "buy": 0,
-        "price": 4096000,
-        "income": 409600
+        "price": 65536000,
+        "income": 640
     },
     {
         "leave": 5,
         "name": "营长",
-        "src": "",
+        "src": "images/person/5.png",
         "buy": 0,
-        "price": 65536000,
-        "income": 6553600
+        "price": 1048576000,
+        "income": 1280
     },
     {
         "leave": 6,
-        "name": "团战",
-        "src": "",
+        "name": "团长",
+        "src": "images/person/6.png",
         "buy": 0,
-        "price": 1048576000,
-        "income": 104857600
+        "price": 16777216000,
+        "income": 2560
     },
     {
         "leave": 7,
         "name": "旅长",
-        "src": "",
+        "src": "images/person/7.png",
         "buy": 0,
-        "price": 16777216000,
-        "income": 1677721600
+        "price": 268435450000,
+        "income": 5120
     },
     {
         "leave": 8,
         "name": "师长",
-        "src": "",
+        "src": "images/person/8.png",
         "buy": 0,
-        "price": 268435450000,
-        "income": 26843545000
+        "price": 1610612700000,
+        "income": 10240
     },
     {
         "leave": 9,
         "name": "军长",
-        "src": "",
+        "src": "images/person/9.png",
         "buy": 0,
-        "price": 1610612700000,
-        "income": 161061270000
+        "price": 25769803000000,
+        "income": 20480
     },
     {
         "leave": 10,
         "name": "司令",
-        "src": "",
+        "src": "images/person/10.png",
         "buy": 0,
-        "price": 25769803000000,
-        "income": 2576980300000
+        "price": 0,
+        "income": 40960
     }
 ]

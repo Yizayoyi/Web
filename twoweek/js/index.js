@@ -13,10 +13,20 @@ for (var i = 0; i < 3; i++) {
         $flex.append(div);
         $item = $flex.find("div").eq(0);
         $item.addClass("item");
-        $item.append(span);
+        $item.append(img);
     }
 }
 
+/**
+ * 添加拖拽事件
+ */
+$(".item").each(function (index) {
+    $(this).attr('data-index', index);
+    $(this).attr('ondragover', "allowDrop(event)");
+    $(this).attr('ondrop', "drop(event)");
+    $(this).find("img").eq(0).attr('draggable', "true");
+    $(this).find("img").eq(0).attr('ondragstart', "drag(event)");
+});
 
 /**
  * 基础数据
@@ -25,12 +35,14 @@ for (var i = 0; i < 3; i++) {
  * leave_num：当前等级的数字
  * data：拥有的数据
  * shops：商店数据和等级数据
+ * time：记录时间
  */
 var coin = 0;
 var leave = "";
 var leave_num = 0;
 var data = [];
 var shops = [];
+var ltime = "";
 
 
 /**
@@ -42,7 +54,9 @@ var setData = function () {
     $("#leave").html(leave);
     for (var i in data) {
         if (parseInt(data[i].leave) > 0) {
-            $(".item").eq(i).find("span").eq(0).html(shops[parseInt(data[i].leave) - 1].name);
+            $(".item").eq(i).find("img").eq(0).attr("src", shops[parseInt(data[i].leave) - 1].src);
+        } else {
+            $(".item").eq(i).find("img").eq(0).html("src", 'images/person/0.png');
         }
     }
 
@@ -55,7 +69,7 @@ var setData = function () {
 var update = function () {
     $.post("./api/update.php", {
         file: "user",
-        data: JSON.stringify({ coin: coin, leave: leave_num })
+        data: JSON.stringify({ coin: coin, leave: leave_num, time: ltime })
     }, function () { });
     $.post("./api/update.php", {
         file: "leave",
@@ -79,6 +93,8 @@ var start = function () {
             coin += parseInt(shops[parseInt(data[i].leave) - 1].income);
         }
     }
+    var now = new Date();
+    ltime = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
     setData();
     setTimeout('start()', 1000);
 }
@@ -99,12 +115,32 @@ $.post("./api/get.php", {
         coin = res.coin;
         leave_num = parseInt(res.leave);
         leave = shops[leave_num - 1].name;
+        ltime = res.time;
         $.post("./api/get.php", {
             action: "data"
         }, function (res) {
             data = JSON.parse(res);
             setData();
             layer.close(load);
+            var now = new Date();
+            if (ltime == "") {
+                ltime = now.getFullYear() + "-" + (now.getMonth() + 1) + "-" + now.getDate() + " " + now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
+            } else {
+                var temp_second = new Date() - new Date(ltime);
+                temp_second = Math.floor(temp_second / 1000);
+                temp_second = temp_second > 7200 ? 7200 : temp_second;
+                var income = 0;
+                for (var i in data) {
+                    if (parseInt(data[i].leave) > 0) {
+                        income += parseInt(shops[parseInt(data[i].leave) - 1].income) * temp_second;
+                    }
+                }
+                coin += income;
+                layer.alert(income, {
+                    title: "离线收益(最高两小时)",
+                    icon: 6
+                });
+            }
             start();
             update();
         });
@@ -138,7 +174,7 @@ var clearShop = function () {
 /**
  * 关闭商店
  */
-$(".shop-close").bind("click", function() {
+$(".shop-close").bind("click", function () {
     $("#shade, .shop").hide();
 });
 
@@ -165,16 +201,16 @@ var loadShop = function () {
                 var index = e.target.dataset.index;
                 var empty = findEmpty();
                 if (empty < 0) {
-                    layer.msg("位置已满", {icon: 5});
+                    layer.msg("位置已满", { icon: 5 });
                 } else {
                     if (coin < shops[index].price) {
-                        layer.msg("金币不足", {icon: 5});
+                        layer.msg("金币不足", { icon: 5 });
                     } else {
                         coin -= shops[index].price;
                         shops[index].price += shops[index].price * speed;
                         shops[index].price = parseInt(shops[index].price);
                         data[empty].leave = shops[index].leave;
-                        layer.msg("购买成功", {icon: 6, time: 1000});
+                        layer.msg("购买成功", { icon: 6, time: 1000 });
                         clearShop();
                         loadShop();
                     }
@@ -197,7 +233,7 @@ var loadShop = function () {
 /**
  * 打开商店
  */
-$("#shop").bind("click", function() {
+$("#shop").bind("click", function () {
     clearShop();
     loadShop();
     $("#shade, .shop").show();
