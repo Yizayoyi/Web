@@ -9,14 +9,14 @@ require_once "./html/header1.html";
 
 <h2 id="leave"></h2>
 
-<p>
-    <button>排行榜</button>
-    <button>幸运转盘</button>
-    <button id="shop">商店</button>
-    <button>垃圾桶</button>
-</p>
+<div id="menu">
+    <div id="rank" class="flex2"></div>
+    <div id="random" class="flex1"></div>
+    <div id="shop" class="flex1"></div>
+    <div id="del" class="flex1" data-index="-1" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+</div>
 
-<p>金币：<span id="coin"></span></p>
+<p id="money">￥<span id="coin"></span></p>
 
 <div class="main"></div>
 

@@ -14,11 +14,14 @@ html, body {
     z-index: -1;
     /*background: url(../images/back.jpg) no-repeat;
     background-size: auto 100%;*/
+    background: #75be52;
 }
 
 main {
     margin: 0 auto 0;
     background: rgb(245, 184, 184);
+    background: url(../images/background.jpg) no-repeat;
+    background-size: 100% 100%;
 }
 
 @media screen and (max-width: 420px) {
