@@ -240,3 +240,66 @@ $("#shop").bind("click", function () {
     loadShop();
     $("#shade, .shop").show();
 });
+
+/**
+ * 转转盘
+ */
+var rotateFunc = function (awards, angle, text, icon) {
+    $('.cj-map').stopRotate();
+    $(".cj-map").rotate({
+        angle: 0,
+        duration: 5000,
+        animateTo: angle + 1440,
+        callback: function () {
+            layer.msg(text, { icon: icon, time: 2000 });
+        }
+    });
+};
+
+/**
+ * 抽奖
+ */
+$(".cj-go").rotate({
+    bind:
+    {
+        click: function () {
+
+            var data = [1, 2, 3, 4, 0, 0, 0, 0];
+            data = data[Math.floor(Math.random() * data.length)];
+            var new_coin = 0;
+            for (var i in shops) {
+                if (shops[i].buy == 0) {
+                    break;
+                }
+                new_coin = shops[i].price;
+            }
+            var add_coin = new_coin * cj[data];
+            if (data == 1) {
+                rotateFunc(1, 22, '恭喜您抽中海量金币:' + add_coin, 6)
+            }
+            if (data == 2) {
+                rotateFunc(2, 202, '恭喜您抽中大量金币:' + add_coin, 6)
+            }
+            if (data == 3) {
+                rotateFunc(3, 292, '恭喜您抽中中量金币:' + add_coin, 6)
+            }
+            if (data == 4) {
+                rotateFunc(3, 112, '恭喜您抽中少量金币:' + add_coin, 6)
+            }
+            if (data == 0) {
+                var angle = [157, 337, 247, 67];
+                angle = angle[Math.floor(Math.random() * angle.length)]
+                rotateFunc(0, angle, '很遗憾 本次未抽中奖', 5)
+            }
+            coin += add_coin;
+        }
+    }
+});
+
+$(".cj-close").bind("click", function() {
+    $(".choujiang, #shade").hide();
+});
+
+$("#random").bind("click", function() {
+    $(".choujiang, #shade").show();
+});

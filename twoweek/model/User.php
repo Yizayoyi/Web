@@ -54,4 +54,26 @@ class User {
         Data::set($username, $file, $data);
     }
 
+    public static function getRank() {
+        $users = scandir(User::$user);
+        $sorts = array();
+        foreach ($users as $user) {
+            $leave = Data::get($user, "user", "leave");
+            $sorts[] = array(
+                "user" => $user,
+                "leave" => $leave
+            );
+        }
+        for ($i = 0; $i < count($sorts); $i++) {
+            for ($j = 0; $j < count($sorts) - $i - 1; $j++) {
+                if ($sorts[$j]["leave"] < $sorts[$j+1]["leave"]) {
+                    $temp = $sorts[$j];
+                    $sorts[$j] = $sorts[$j+1];
+                    $sorts[$j+1] = $temp;
+                }
+            }
+        }
+        return json_encode($sorts);
+    }
+
 }

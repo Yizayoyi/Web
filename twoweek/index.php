@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once "./function/checkLogin.php";
 require_once "./html/header1.html";
 ?>
@@ -30,8 +30,24 @@ require_once "./html/header1.html";
     <div class="shop-cont"></div>
 </div>
 
+<div class="choujiang">
+    <div class="cj-go"></div>
+    <div class="cj-map"></div>
+    <div class="cj-close">x</div>
+</div>
+
+<div class="rank">
+    <div class="rank-title">
+        <div class="rank-name">排行榜</div>
+        <div class="rank-close flex-right">×</div>
+    </div>
+    <div class="rank-cont"></div>
+</div>
+
 <?php require_once "./html/footer1.html";?>
 
+<script src="js/jQueryRotate.2.2.js"></script>
+<script src="js/jquery.easing.min.js"></script>
 <script src="js/index.js"></script>
 
 <?php require_once "./html/footer2.html";?>
