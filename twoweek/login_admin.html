@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>管理员登录</title>
+    <style>
+        html, body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: whitesmoke;
+        }
+        #div1, #div2 {
+            width: 400px;
+            height: 400px;
+            position: fixed;
+            z-index: 6666;
+            background: white;
+            box-shadow: 0 0 10px wheat;
+            top: calc(50% - 200px);
+            left: calc(50% - 200px);
+            padding: 20px;
+        }
+        #div1 > div, #div2 > div {
+            height: 200px;
+            display: flex;
+            align-items:center;
+            justify-content:center;
+        }
+        #div1 input, #div2 input {
+            width: 100px;
+            margin-right: 20px;
+            height: 30px;
+            line-height: 30px;
+            outline: none;
+            border: 0;
+            border-radius: 30px;
+            padding: 0 15px;
+            background: whitesmoke;
+            transition: all .6s;
+        }
+        #div1 input:focus, #div2 input:focus {
+            border: 1px solid skyblue;
+        }
+        #div1 input[type='button'], #div2 input[type='button'] {
+            cursor: pointer;
+        }
+        #div1 input[type='button']:hover, #div2 input[type='button']:hover {
+            background: skyblue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <div>
+            <span id="num_a"></span>
+            <span>+</span>
+            <span id="num_b"></span>
+        </div>
+        <div>
+            <input type="text" placeholder="请输入结果" required autocomplete="off" id="one_res">
+            <input type="button" value="提交" id="one_ok">
+        </div>
+    </div>
+    <div id="div2">
+        <div>
+            <input type="text" placeholder="请输入管理员密码" required autocomplete="off" id="two_res">
+        </div>
+        <div>
+            <input type="button" value="提交" id="two_ok">
+        </div>
+    </div>
+</body>
+<script src="js/jquery.js"></script>
+<script src="js/layer/layer.js"></script>
+<script>
+    $("#div1, #div2").hide();
+    var div = ['#div1', '#div2'];
+    var t = 0;
+    var show = function () {
+        $(div[t]).show();
+        for (var i in div) {
+            if (i == t) {
+                continue;
+            } else {
+                $(div[i]).hide();
+            }
+        }
+    }
+    show();
+    var a, b;
+    var create_one = function () {
+        a = Math.floor(Math.random() * 100);
+        b = Math.floor(Math.random() * 100);
+        $("#num_a").html(a);
+        $("#num_b").html(b);
+    }
+    create_one();
+    $("#one_ok").bind("click", function () {
+        if (a + b == $("#one_res").val()) {
+            layer.msg("正确", { icon: 6, time: 1000 });
+            t++;
+            show();
+        } else {
+            layer.msg("错误", { icon: 5, time: 1000 });
+            create_one();
+        }
+    });
+    $("#two_ok").bind("click", function () {
+        var load = layer.msg('验证中...', { icon: 16, shade: 0.3, time: 10000 });
+        $.post("./api/admin.php", {
+            passwd: $("#two_res").val()
+        }, function (res) {
+            var data = JSON.parse(res);
+            if (data.state == "success") {
+                document.location.href = "/admin.php";
+            } else {
+                layer.msg("错误", { icon: 5, time: 1000 });
+            }
+        });
+    });
+</script>
+
+</html>

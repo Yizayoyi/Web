@@ -99,7 +99,7 @@ img {
     z-index: 6666;
 }
 
-.shop {
+.shop, .rank {
     position: fixed;
     z-index: 9999;
     background: whitesmoke;
@@ -108,7 +108,7 @@ img {
     box-shadow: 0 0 5px white;
 }
 
-.shop-title {
+.shop-title, .rank-title {
     width: calc(100% - 20px);
     height: 29px;
     line-height: 29px;
@@ -123,14 +123,14 @@ img {
     margin-left: auto;
 }
 
-.shop-name {
+.shop-name, .rank-name {
     height: 29px;
     line-height: 29px;
     color: midnightblue;
     font-size: 13px;
 }
 
-.shop-close {
+.shop-close, .rank-close {
     height: 29px;
     line-height: 29px;
     text-align: center;
@@ -141,13 +141,13 @@ img {
     cursor: pointer;
 }
 
-.shop-close:hover {
+.shop-close:hover, .rank-close:hover {
     background: rgba(248, 72, 2, 0.9);
     color: white;
 }
 
 @media screen and (max-width: 420px) {
-    .shop {
+    .shop, .rank {
         width: 80%;
         left: 10%;
     }
@@ -155,27 +155,27 @@ img {
 }
 
 @media screen and (min-width: 420px) {
-    .shop {
+    .shop, .rank {
         width: 360px;
         left: calc(50% - 180px);
     }
 }
 
-.shop-cont {
+.shop-cont, .rank-cont {
     width: calc(100% - 20px);
     height: calc(100% - 50px);
     padding: 10px;
     overflow-y: auto;
 }
 
-.shop-item {
+.shop-item, .rank-item {
     width: 100%;
     padding: 10px 0;
     display: flex;
     flex-direction: row;
 }
 
-.shop-item > div {
+.shop-item > div, .rank-item > div {
     width: 60%;
     border-radius: 10px;
     text-align: center;
@@ -184,19 +184,19 @@ img {
     justify-content:center;
 }
 
-.shop-item > div:nth-child(2) {
+.shop-item > div:nth-child(2), .rank-item > div:nth-child(2) {
     background: paleturquoise;
     color: #ff6600;
 }
 
-.shop-item > div:last-child {
+.shop-item > div:last-child, .rank-item > div:last-child {
     margin-left: auto;
     width: 20%;
     transition: all .3s;
 }
 
 
-.shop-item > div:first-child {
+.shop-item > div:first-child, .rank-item > div:first-child {
     width: 20%;
     background: yellowgreen;
     color: white;

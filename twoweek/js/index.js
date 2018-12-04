@@ -171,6 +171,13 @@ var clearShop = function () {
     $(".shop-cont").empty();
 }
 
+/**
+ * 清排行榜
+ */
+var clearRank = function () {
+    $(".rank-cont").empty();
+}
+
 
 /**
  * 关闭商店
@@ -214,6 +221,7 @@ var loadShop = function () {
                         layer.msg("购买成功", { icon: 6, time: 1000 });
                         clearShop();
                         loadShop();
+                        setData();
                     }
                 }
             });
@@ -274,6 +282,7 @@ $(".cj-go").rotate({
                 new_coin = shops[i].price;
             }
             var add_coin = new_coin * cj[data];
+            add_coin = Math.floor(add_coin);
             if (data == 1) {
                 rotateFunc(1, 22, '恭喜您抽中海量金币:' + add_coin, 6)
             }
@@ -303,3 +312,38 @@ $(".cj-close").bind("click", function() {
 $("#random").bind("click", function() {
     $(".choujiang, #shade").show();
 });
+
+$(".rank-close").bind("click", function() {
+    $(".rank, #shade").hide();
+});
+
+$("#rank").bind("click", function() {
+    clearRank();
+    loadRank();
+    $(".rank, #shade").show();
+});
+
+/**
+ * 加载排行榜
+ */
+var loadRank = function () {
+    load = layer.msg('排行榜加载中...', { icon: 16, shade: 0.3, time: 10000 });
+    $.post('./api/rank.php', {}, function (res) {
+        res = JSON.parse(res);
+        layer.close(load);
+        for (var i in res) {
+            $(".rank-cont").append(div);
+            $div = $(".rank-cont").find("div").eq($(".rank-cont").find("div").length - 1);
+            $div.addClass("rank-item");
+            $div.prepend(div);
+            $div.find("div").eq(0).append(img);
+            $div.find("div").eq(0).find("img").eq(0).attr("src", shops[res[i].leave - 1].src);
+            $div.prepend(div);
+            $div.find("div").eq(0).html(res[i].user + ":");
+            $div.find("div").eq(0).append(span);
+            $div.find("div").eq(0).find("span").eq(0).html(shops[res[i].leave - 1].name);
+            $div.prepend(div);
+            $div.find("div").eq(0).html(parseInt(i) + 1);
+        }
+    });
+}

@@ -58,6 +58,9 @@ class User {
         $users = scandir(User::$user);
         $sorts = array();
         foreach ($users as $user) {
+            if ($user == "." || $user == "..") {
+                continue;
+            }
             $leave = Data::get($user, "user", "leave");
             $sorts[] = array(
                 "user" => $user,
