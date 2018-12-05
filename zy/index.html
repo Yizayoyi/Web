@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+</body>
+<script>
+    var p = function(text) {
+        document.write(text + "<br>");
+    }
+    p("软件工程1607班 刘靖诗 161203726");
+    var str = prompt("请输入字符串", "");
+    var zm = str.match(/[a-z]/ig).length;
+    var sz = str.match(/[0-9]/ig).length;
+    var qt = str.length - zm - sz;
+    p("字母:"+zm);
+    p("数字:"+sz);
+    p("其他:"+qt);
+</script>
+
+</html>
